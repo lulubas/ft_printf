@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conv_c.c                                        :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbastien <lbastien@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:07:13 by lbastien          #+#    #+#             */
-/*   Updated: 2023/01/17 17:19:41 by lbastien         ###   ########.fr       */
+/*   Created: 2023/01/17 15:40:50 by lbastien          #+#    #+#             */
+/*   Updated: 2023/01/18 17:40:20 by lbastien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"../include/printf.h"
 
-int	ft_conv_s(const char *str)
+int	ft_putchar(char c)
 {
-	int	count;
-	int	i;
-	
-	count = 0;
-	i = 0;
-	while(str[i])
-	{
-		count += ft_printchar(str[i]);
-		i++;
-	}
-	return(count);
+	write(1, &c, 1);
+	return (1);
 }

@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printchar.c                                     :+:      :+:    :+:   */
+/*   ft_conv_p.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbastien <lbastien@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 15:40:50 by lbastien          #+#    #+#             */
-/*   Updated: 2023/01/17 15:45:22 by lbastien         ###   ########.fr       */
+/*   Created: 2023/01/17 17:20:06 by lbastien          #+#    #+#             */
+/*   Updated: 2023/01/18 18:29:09 by lbastien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"../include/printf.h"
+#include<string.h>
 
-int	ft_printchar (char c)
+int	ft_putnbr(int num)
 {
-	write(1, &c, 1);
-	return (1);
+	char	*str;
+	int	count;
+
+	str = ft_itoa(num);
+	count = ft_putstr(str);
+	return (count);
 }
