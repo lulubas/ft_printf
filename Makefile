@@ -6,14 +6,15 @@
 #    By: lbastien <lbastien@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 22:10:10 by lbastien          #+#    #+#              #
-#    Updated: 2023/01/20 18:12:35 by lbastien         ###   ########.fr        #
+#    Updated: 2023/01/20 18:37:55 by lbastien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Standard variables
 
-NAME		=	libft.a
+NAME		=	libftprintf.a
 INCLUDE_DIR	= 	include
+LIBFT		=	libft
 SRC_DIR 	=	src/
 OBJ_DIR		=	obj/
 CC			=	gcc
@@ -35,48 +36,23 @@ WHITE = \033[0;97m
 
 #Sources
 
-IS_DIR		=	is/
-FTIS		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint
-
-MEM_DIR		=	mem/
-FTMEM		=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memmove ft_memset \
-				ft_memcpy
-
-PUT_DIR		=	put/
-FTPUT		=	ft_putchar ft_putstr ft_putnbr ft_putchar_fd ft_putendl_fd \
-				ft_putnbr_fd ft_putstr_fd
-
-TO_DIR		=	to/
-FTTO		=	ft_atoi ft_itoa ft_tolower ft_toupper
-
-STR_DIR		=	str/
-FTSTR		=	ft_split ft_strchr ft_strdup ft_striteri ft_strjoin \
-				ft_strlcat ft_strlcpy ft_strlen ft_strmapi ft_strncmp \
-				ft_strnstr ft_strrchr ft_strtrim ft_substr
-
-LST_DIR		=	lst/
-FTLST		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone ft_lstiter \
-				ft_lstlast ft_lstmap ft_lstnew ft_lstsize
-
-SRC_FILES+=$(addprefix $(IS_DIR),$(FTIS))
-SRC_FILES+=$(addprefix $(MEM_DIR),$(FTMEM))
-SRC_FILES+=$(addprefix $(PUT_DIR),$(FTPUT))
-SRC_FILES+=$(addprefix $(TO_DIR),$(FTTO))
-SRC_FILES+=$(addprefix $(STR_DIR),$(FTSTR))
-SRC_FILES+=$(addprefix $(LST_DIR),$(FTLST))
+SRC_FILES =	ft_printf ft_puthex ft_putunbr
 
 SRCS 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-#exei
+#exe
 
 OBJ_F		=	.cache_exists
 
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
+			@make -C $(LIBFT)
+			@cp libft/libft.a .
+			@mv libft.a $(NAME)
 			@$(AR) $(NAME) $(OBJS)
-			@echo "$(GREEN)Libft compiled!$(DEF_COLOR)"
+			@echo "$(GREEN)Printf compiled!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJ_F)
 			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
@@ -84,24 +60,17 @@ $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJ_F)
 
 $(OBJ_F):
 			@mkdir -p $(OBJ_DIR)
-			@mkdir -p $(OBJ_DIR)$(IS_DIR)
-			@mkdir -p $(OBJ_DIR)$(MEM_DIR)
-			@mkdir -p $(OBJ_DIR)$(PUT_DIR)
-			@mkdir -p $(OBJ_DIR)$(TO_DIR)
-			@mkdir -p $(OBJ_DIR)$(STR_DIR)
-			@mkdir -p $(OBJ_DIR)$(LST_DIR)
-
 clean:
 			@$(RM) -rf $(OBJ_DIR)
-			@$(RM) -f $(OBJ_F)
-			@echo "$(BLUE)libft objects files cleaned!$(DEF_COLOR)"
+			@make clean -C $(LIBFT)
+			@echo "$(BLUE)Printf objects files cleaned!$(DEF_COLOR)"
 
 fclean:		clean
 			@$(RM) -f $(NAME)
-			@echo "$(CYAN)libft executable files cleaned!$(DEF_COLOR)"
+			@echo "$(CYAN)Printf executable files cleaned!$(DEF_COLOR)"
 
 re:			fclean all
-			@echo "$(GREEN)Cleaned and rebuilt everything for libft!$(DEF_COLOR)"
+			@echo "$(GREEN)Cleaned and rebuilt everything for printf!$(DEF_COLOR)"
 
 norm:
 	@norminette $(SRCS) $(INCLUDES) | grep -v Norme -B1 || true

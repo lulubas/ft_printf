@@ -6,7 +6,7 @@
 /*   By: lbastien <lbastien@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:07:09 by lbastien          #+#    #+#             */
-/*   Updated: 2023/01/20 15:05:38 by lbastien         ###   ########.fr       */
+/*   Updated: 2023/01/20 18:34:09 by lbastien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdarg.h>
@@ -16,7 +16,6 @@ int	ft_printf(const char *input, ...)
 {
 	int		count;
 	int		i;
-	int		err_check;
 	va_list	args;
 
 	va_start(args, input);

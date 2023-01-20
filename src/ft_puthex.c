@@ -6,7 +6,7 @@
 /*   By: lbastien <lbastien@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:59:05 by lbastien          #+#    #+#             */
-/*   Updated: 2023/01/20 14:59:19 by lbastien         ###   ########.fr       */
+/*   Updated: 2023/01/20 18:34:37 by lbastien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 int	ft_puthex(unsigned long num, char c)
 {
 	char		*str;
-	char		*new;
-	long int	n;
 	int			count;
 	int			i;
 
