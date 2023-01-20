@@ -6,10 +6,11 @@
 /*   By: lbastien <lbastien@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:48:53 by lbastien          #+#    #+#             */
-/*   Updated: 2023/01/18 16:04:21 by lbastien         ###   ########.fr       */
+/*   Updated: 2023/01/20 14:38:13 by lbastien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"../include/printf.h"
+
 int	ft_count(long int n)
 {
 	int	c;

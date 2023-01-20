@@ -6,7 +6,7 @@
 /*   By: lbastien <lbastien@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 17:20:06 by lbastien          #+#    #+#             */
-/*   Updated: 2023/01/19 14:54:35 by lbastien         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:06:12 by lbastien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"../include/printf.h"
@@ -15,7 +15,7 @@
 int	ft_putunbr(unsigned int num)
 {
 	char	*str;
-	int	count;
+	int		count;
 
 	str = ft_uitoa(num);
 	count = ft_putstr(str);
@@ -37,10 +37,10 @@ int	ft_ucount(long unsigned int n)
 
 char	*ft_uitoa(unsigned int m)
 {
-	char		*str;
+	char				*str;
 	long unsigned int	n;
-	int			i;
-	int			j;
+	int					i;
+	int					j;
 
 	j = 0;
 	n = m;

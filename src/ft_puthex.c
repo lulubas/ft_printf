@@ -6,7 +6,7 @@
 /*   By: lbastien <lbastien@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:59:05 by lbastien          #+#    #+#             */
-/*   Updated: 2023/01/19 18:09:40 by lbastien         ###   ########.fr       */
+/*   Updated: 2023/01/20 14:59:19 by lbastien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,24 @@
 
 int	ft_puthex(unsigned long num, char c)
 {
-	char *str;
-	char *new;
-	long int n;
-	int	count;
-	int	convert;
-	int i;
+	char		*str;
+	char		*new;
+	long int	n;
+	int			count;
+	int			i;
 
 	i = ft_counthex(num);
 	str = (char *)malloc(sizeof(char) * i + 1);
 	if (!str)
 		return (0);
 	str[i] = 0;
-	i--;
-	while(num > 0)
+	while (i > 0)
 	{
+		i--;
 		str[i] = ft_modulohex(num);
 		num /= 16;
-		i--;
 	}
-	if(c == 'X')
-	{
-		while (str[i])
-		{
-			ft_toupper(str[i]);
-			i++;
-		}
-	}
-	else if (c == 'p')
-		str = ft_strjoin("0x", str);
+	str = ft_iterate(str, c);
 	count = ft_putstr(str);
 	return (count);
 }
@@ -52,7 +41,7 @@ int	ft_counthex(long num)
 	int	count;
 
 	count = 0;
-	while(num > 0)
+	while (num > 0)
 	{
 		num /= 16;
 		count ++;
@@ -60,10 +49,10 @@ int	ft_counthex(long num)
 	return (count);
 }
 
-int ft_modulohex(long n)
+int	ft_modulohex(long n)
 {
 	int	mod;
-	
+
 	mod = n % 16;
 	if (mod > 9)
 		mod += 87;
@@ -72,3 +61,20 @@ int ft_modulohex(long n)
 	return (mod);
 }
 
+char	*ft_iterate(char *str, char c)
+{
+	int	i;
+
+	i = 0;
+	if (c == 'X')
+	{
+		while (str[i])
+		{
+			str[i] = ft_toupper(str[i]);
+			i++;
+		}
+	}
+	else if (c == 'p')
+		str = ft_strjoin("0x", str);
+	return (str);
+}
