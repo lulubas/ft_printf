@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbastien <lbastien@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 13:08:22 by lbastien          #+#    #+#             */
-/*   Updated: 2023/01/20 15:08:52 by lbastien         ###   ########.fr       */
+/*   Created: 2023/01/23 18:49:50 by lbastien          #+#    #+#             */
+/*   Updated: 2023/01/23 18:50:38 by lbastien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include<unistd.h>
-# include<string.h>
-# include<stdlib.h>
 # include<stdarg.h>
-# include<stdio.h>
+# include<stdlib.h>
 
 int		ft_parse(const char c, va_list args);
 int		ft_printf(const char *input, ...);
@@ -29,8 +27,8 @@ char	*ft_itoa(int m);
 char	*ft_uitoa(unsigned int m);
 int		ft_ucount(long unsigned int n);
 int		ft_puthex(unsigned long num, char c);
-int		ft_counthex(long num);
-int		ft_modulohex(long n);
+int		ft_counthex(unsigned long num);
+int		ft_modulohex(unsigned long n);
 char	*ft_iterate(char *str, char c);
 int		ft_toupper(int c);
 char	*ft_strjoin(char const *s1, char const *s2);

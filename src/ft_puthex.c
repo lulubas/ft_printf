@@ -6,11 +6,11 @@
 /*   By: lbastien <lbastien@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:59:05 by lbastien          #+#    #+#             */
-/*   Updated: 2023/01/20 18:34:37 by lbastien         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:46:19 by lbastien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../include/printf.h"
+#include"../include/ft_printf.h"
 
 int	ft_puthex(unsigned long num, char c)
 {
@@ -31,15 +31,16 @@ int	ft_puthex(unsigned long num, char c)
 	}
 	str = ft_iterate(str, c);
 	count = ft_putstr(str);
+	free(str);
 	return (count);
 }
 
-int	ft_counthex(long num)
+int	ft_counthex(unsigned long num)
 {
 	int	count;
 
-	count = 0;
-	while (num > 0)
+	count = 1;
+	while (num > 15)
 	{
 		num /= 16;
 		count ++;
@@ -47,7 +48,7 @@ int	ft_counthex(long num)
 	return (count);
 }
 
-int	ft_modulohex(long n)
+int	ft_modulohex(unsigned long n)
 {
 	int	mod;
 
@@ -61,7 +62,8 @@ int	ft_modulohex(long n)
 
 char	*ft_iterate(char *str, char c)
 {
-	int	i;
+	int		i;
+	char	*new_str;
 
 	i = 0;
 	if (c == 'X')
@@ -73,6 +75,10 @@ char	*ft_iterate(char *str, char c)
 		}
 	}
 	else if (c == 'p')
-		str = ft_strjoin("0x", str);
+	{
+		new_str = ft_strjoin("0x", str);
+		free(str);
+		return (new_str);
+	}
 	return (str);
 }

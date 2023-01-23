@@ -1,16 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conv_p.c                                        :+:      :+:    :+:   */
+/*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbastien <lbastien@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 17:20:06 by lbastien          #+#    #+#             */
-/*   Updated: 2023/01/20 15:06:12 by lbastien         ###   ########.fr       */
+/*   Created: 2023/01/23 18:41:11 by lbastien          #+#    #+#             */
+/*   Updated: 2023/01/23 18:46:31 by lbastien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"../include/printf.h"
-#include<string.h>
+#include "../include/ft_printf.h"
 
 int	ft_putunbr(unsigned int num)
 {
@@ -19,6 +18,7 @@ int	ft_putunbr(unsigned int num)
 
 	str = ft_uitoa(num);
 	count = ft_putstr(str);
+	free(str);
 	return (count);
 }
 
@@ -26,8 +26,8 @@ int	ft_ucount(long unsigned int n)
 {
 	int	c;
 
-	c = 0;
-	while (n)
+	c = 1;
+	while (n > 9)
 	{
 		n /= 10;
 		c++;

@@ -6,11 +6,11 @@
 /*   By: lbastien <lbastien@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:07:09 by lbastien          #+#    #+#             */
-/*   Updated: 2023/01/20 18:34:09 by lbastien         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:45:46 by lbastien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdarg.h>
-#include "../include/printf.h"
+#include "../include/ft_printf.h"
 
 int	ft_printf(const char *input, ...)
 {
@@ -27,10 +27,11 @@ int	ft_printf(const char *input, ...)
 	{
 		if (input[i] == '%')
 		{
-			count += ft_parse(input[i + 1], args);
-			i += 2;
+			i++;
+			count += ft_parse(input[i], args);
 		}
-		count += ft_putchar(input[i]);
+		else
+			count += ft_putchar(input[i]);
 		i++;
 	}
 	va_end(args);
